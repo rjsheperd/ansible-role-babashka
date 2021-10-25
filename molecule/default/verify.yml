@@ -1,0 +1,20 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Verify Babashka is installed
+      command: "/usr/local/bin/bb --version"
+      changed_when: false
+      register: bb_version
+
+    - name: OUTPUT SHOW COMMAND to SCREEN
+      debug:
+        msg: "{{ bb_version }}"
+
+    - name: Assert installed
+      assert:
+        that:
+          - "'babashka' in '{{ bb_version.stdout}}'"
+        success_msg: "Yes, Babashka has been installed."
+        fail_msg: "Babashka does NOT exist!"

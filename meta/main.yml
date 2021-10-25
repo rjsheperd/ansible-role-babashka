@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  role_name: babashka
+  author: rjsheperd
+  description: Babashka
+  company: Spatial Informatics Group, Inc.
+  min_ansible_version: 3.0
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+    - name: EL
+      versions:
+        - 8
+  galaxy_tags:
+    - development
+    - clojure
+    - babashka
+dependencies: []

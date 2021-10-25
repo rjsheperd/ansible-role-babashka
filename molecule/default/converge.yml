@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ansible-role-babashka
+
+  pre_tasks:
+    - name: Update Debian repos
+      apt: update_cache=yes
+      when: ansible_os_family == "Debian"
+      changed_when: false

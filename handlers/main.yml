@@ -1,0 +1,12 @@
+---
+- name: Install Babashka
+  become: true
+  command: >
+    /bin/bash -c '{{ bb_install_script }}'
+  when: bb_install_status.stat.isdir is not defined
+
+- name: Remove Babashka install script
+  file:
+    path: "{{ bb_install_script }}"
+    state: absent
+  when: bb_install_status.stat.isdir is not defined

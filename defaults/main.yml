@@ -1,0 +1,8 @@
+---
+bb_install_path: "/usr/local/bin/bb"
+
+bb_install_workdir: "/tmp"
+bb_install_script_name: "linux-install-bb.sh"
+
+bb_download_url: "https://raw.githubusercontent.com/babashka/babashka/master/install"
+bb_install_script: "{{ bb_install_workdir }}/{{ bb_install_script_name }}"

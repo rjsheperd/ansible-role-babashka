@@ -1,0 +1,29 @@
+---
+- name: Install prerequisites
+  package:
+    name: "{{ item }}"
+  with_items:
+    - curl
+
+- name: Check if Babashka has been installed already
+  stat:
+    path: "{{ bb_install_path }}"
+  register: bb_install_status
+
+- name: DEBUG
+  debug:
+    msg: "{{ bb_install_status }}"
+
+- name: Download Babashka
+  get_url:
+    url: "{{ bb_download_url }}"
+    dest: "{{ bb_install_script }}"
+    force: false
+    mode: 0755
+  when: not bb_install_status.stat.exists
+  notify:
+    - Install Babashka
+    - Remove Babashka install script
+
+- name: Flush notifications
+  meta: flush_handlers
