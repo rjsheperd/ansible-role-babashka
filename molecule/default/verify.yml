@@ -8,10 +8,6 @@
       changed_when: false
       register: bb_version
 
-    - name: OUTPUT SHOW COMMAND to SCREEN
-      debug:
-        msg: "{{ bb_version }}"
-
     - name: Assert installed
       assert:
         that:

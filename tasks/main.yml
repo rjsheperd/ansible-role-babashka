@@ -1,18 +1,12 @@
 ---
 - name: Install prerequisites
   package:
-    name: "{{ item }}"
-  with_items:
-    - curl
+    name: curl
 
 - name: Check if Babashka has been installed already
   stat:
     path: "{{ bb_install_path }}"
   register: bb_install_status
-
-- name: DEBUG
-  debug:
-    msg: "{{ bb_install_status }}"
 
 - name: Download Babashka
   get_url:
